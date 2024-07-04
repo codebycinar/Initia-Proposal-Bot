@@ -9,7 +9,7 @@ const bot = new TelegramBot(token, { polling: true });
 // Send request and check result
 const checkEmergencyProposals = async () => {
     try {
-      const response = await fetch('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals', {
+        const response = await fetch('https://lcd.initiation-1.initia.xyz/initia/gov/v1/proposals?proposal_status=PROPOSAL_STATUS_VOTING_PERIOD', {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
                 'Accept': 'application/json, text/plain, */*',
@@ -17,20 +17,28 @@ const checkEmergencyProposals = async () => {
                 'Origin': 'https://lcd.initiation-1.initia.xyz'
             }
         });
-        const proposals = response.data.proposals;
 
-        if (proposals && proposals.length > 0) {
-            const proposal = proposals[0];
-            const message = `
-                New Emergency Proposal:
-                Title: ${proposal.title}
-                Summary: ${proposal.summary}
-                Status: ${proposal.status}
-                Proposer: ${proposal.proposer}
-                Emergency Start Time: ${proposal.emergency_start_time}
-            `;
+        if (response.ok) {
+            const data = await response.json();
+            console.log('API Response:', data);
 
-            bot.sendMessage(chatId, message);
+            const proposals = data.proposals;
+
+            if (proposals && proposals.length > 0) {
+                const proposal = proposals[0];
+                const message = `
+                    New Emergency Proposal:
+                    Title: ${proposal.title}
+                    Summary: ${proposal.summary}
+                    Status: ${proposal.status}
+                    Proposer: ${proposal.proposer}
+                    Emergency Start Time: ${proposal.emergency_start_time}
+                `;
+
+                bot.sendMessage(chatId, message);
+            }
+        } else {
+            console.error('Error fetching emergency proposals:', response.status, response.statusText);
         }
     } catch (error) {
         console.error('Error fetching emergency proposals:', error);
