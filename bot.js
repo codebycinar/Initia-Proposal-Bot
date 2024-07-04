@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const axios = require('axios');
+const fetch = require('node-fetch');
 const config = require('./config/config.json');
 
 const token = config.TELEGRAM_BOT_TOKEN; 
@@ -9,7 +9,7 @@ const bot = new TelegramBot(token, { polling: true });
 // Send request and check result
 const checkEmergencyProposals = async () => {
     try {
-       const response = await axios.get('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals', {
+      const response = await fetch('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals', {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
                 'Accept': 'application/json, text/plain, */*',
