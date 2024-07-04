@@ -9,13 +9,21 @@ const bot = new TelegramBot(token, { polling: true });
 // Send request and check result
 const checkEmergencyProposals = async () => {
     try {
-        const response = await fetch('https://lcd.initiation-1.initia.xyz/initia/gov/v1/proposals?proposal_status=PROPOSAL_STATUS_VOTING_PERIOD', {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-                'Accept': 'application/json, text/plain, */*',
-                'Referrer': 'https://lcd.initiation-1.initia.xyz',
-                'Origin': 'https://lcd.initiation-1.initia.xyz'
-            }
+       const response = await fetch("https://lcd.initiation-1.initia.xyz/initia/gov/v1/proposals?proposal_status=PROPOSAL_STATUS_VOTING_PERIOD", {
+            "credentials": "include",
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0",
+                "Accept": "application/json",
+                "Accept-Language": "en-US,en;q=0.5",
+                "Alt-Used": "lcd.initiation-1.initia.xyz",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Priority": "u=1"
+            },
+            "referrer": "https://lcd.initiation-1.initia.xyz/swagger/",
+            "method": "GET",
+            "mode": "cors"
         });
 
         if (response.ok) {
