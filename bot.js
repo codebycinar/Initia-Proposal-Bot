@@ -21,7 +21,6 @@ const checkEmergencyProposals = async () => {
                 "Sec-Fetch-Site": "same-origin",
                 "Priority": "u=1"
             },
-            "referrer": "https://lcd.initiation-1.initia.xyz/swagger/",
             "method": "GET",
             "mode": "cors"
         });
