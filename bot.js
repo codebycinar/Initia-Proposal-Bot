@@ -9,7 +9,14 @@ const bot = new TelegramBot(token, { polling: true });
 // Send request and check result
 const checkEmergencyProposals = async () => {
     try {
-        const response = await axios.get('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals');
+       const response = await axios.get('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals', {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                'Accept': 'application/json, text/plain, */*',
+                'Referrer': 'https://lcd.initiation-1.initia.xyz',
+                'Origin': 'https://lcd.initiation-1.initia.xyz'
+            }
+        });
         const proposals = response.data.proposals;
 
         if (proposals && proposals.length > 0) {
