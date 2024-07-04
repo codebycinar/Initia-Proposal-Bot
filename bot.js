@@ -9,7 +9,7 @@ const bot = new TelegramBot(token, { polling: true });
 // Send request and check result
 const checkEmergencyProposals = async () => {
     try {
-       const response = await fetch("http://localhost:1317/initia/gov/v1/proposals?proposal_status=PROPOSAL_STATUS_VOTING_PERIOD", {
+       const response = await fetch("https://initia-testnet-api.itrocket.net/initia/gov/v1/proposals?proposal_status=PROPOSAL_STATUS_VOTING_PERIOD", {
             "credentials": "include",
             "headers": {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0",
