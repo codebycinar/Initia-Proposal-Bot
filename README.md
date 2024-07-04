@@ -15,7 +15,8 @@ This is a simple Telegram bot that checks the Initia emergency proposals every 3
    - Send a message to your bot (e.g., /start).
    - To find your chat ID, you can use an API like [getUpdates](https://api.telegram.org/bot<YOUR_TELEGRAM_BOT_TOKEN>/getUpdates). Replace <YOUR_TELEGRAM_BOT_TOKEN> with your actual bot token.
    - The chat ID will be in the response JSON under "message" -> "chat" -> "id". Save this chat ID as it will be used later.
-
+Also, you can use my bot [t.me/initia_proposal_bot]
+ 
 3. Clone the repository:
    ```sh
    git clone https://github.com/codebycinar/initia-proposal-bot.git
