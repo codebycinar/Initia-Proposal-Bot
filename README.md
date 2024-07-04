@@ -7,7 +7,7 @@ This is a simple Telegram bot that checks the Initia emergency proposals every 3
 1. Clone the repository:
    ```sh
    git clone https://github.com/codebycinar/initia-proposal-bot.git
-   cd initia-telegram-bot
+   cd initia-proposal-bot
    ```
 
 2. Install the dependencies:
