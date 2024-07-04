@@ -6,7 +6,7 @@ const token = config.TELEGRAM_BOT_TOKEN;
 const chatId = config.TELEGRAM_CHAT_ID; 
 const bot = new TelegramBot(token, { polling: true });
 
-// API'ye istek atma ve sonucu kontrol etme fonksiyonu
+// Send request and check result
 const checkEmergencyProposals = async () => {
     try {
         const response = await axios.get('https://lcd.initiation-1.initia.xyz/initia/gov/v1/emergency_proposals');
