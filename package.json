@@ -1,0 +1,13 @@
+{
+  "name": "initia-telegram-bot",
+  "version": "1.0.0",
+  "description": "A Telegram bot to check Initia emergency proposals",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-telegram-bot-api": "^0.51.0"
+  }
+}
